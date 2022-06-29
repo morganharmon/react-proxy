@@ -1,9 +1,9 @@
-export default function PokemonSearch({ pokemonInput }) {
+export default function PokemonSearch({ pokemonInput, setPokemonInput, pokemonSubmit }) {
   return (
     <div>
-      <form>
+      <form onSubmit={pokemonSubmit}>
         <label>Pokemon: </label>
-        <input value={pokemonInput} />
+        <input value={pokemonInput} onChange={(e) => setPokemonInput(e.target.value)} />
         <button>Search</button>
       </form>
     </div>
