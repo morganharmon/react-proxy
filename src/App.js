@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import PokemonSearch from './PokemonSearch';
+import YelpSearch from './YelpSearch';
+import WeatherSearch from './WeatherSearch';
+import PokemonList from './PokemonList';
+import BusinessesList from './BusinessesList';
+import WeatherList from './WeatherList';
+import { useState } from 'react-router-dom';
 
 function App() {
+  const [pokemonInput, setPokemonInput] = useState('');
+  const [yelpInput, setYelpInput] = useState('');
+  const [weatherInput, setWeatherInput] = useState('');
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <section id='searches'>
+        <PokemonSearch pokemonInput={pokemonInput} />
+        <YelpSearch yelpInput={yelpInput} />
+        <WeatherSearch weatherInput={weatherInput} />
+      </section>
+      <section id='lists'>
+        <PokemonList />
+        <BusinessesList />
+        <WeatherList />
+      </section>
     </div>
   );
 }
