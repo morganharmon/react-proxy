@@ -10,7 +10,7 @@ const headers = {
 
 exports.handler = async (event, context) => {
   try {
-    const response = await fetch(`https://api.yelp.com/v3/businesses/search=${event.queryStringParameters.pokeQuery}`);
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${event.queryStringParameters.lat}&lon=${event.queryStringParameters.lon}&appid=${process.env.LOC_KEY}`);
     const data = await response.json();
     const json = JSON.stringify(data);
     

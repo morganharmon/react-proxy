@@ -6,7 +6,7 @@ import PokemonList from './PokemonList';
 import BusinessesList from './BusinessesList';
 import WeatherList from './WeatherList';
 import { useState } from 'react';
-import { getPokemon, getYelp } from './services/fetch-utils';
+import { getPokemon, getYelp, getLocation, getWeather } from './services/fetch-utils';
 
 function App() {
   const [pokemonInput, setPokemonInput] = useState('');
@@ -26,9 +26,16 @@ function App() {
   async function yelpSubmit(e) {
     e.preventDefault();
     const response = await getYelp(yelpInput);
-    console.log(response);
     setBusinesses(response.businesses);
     setYelpInput('');
+  }
+
+  async function weatherSubmit(e) {
+    e.preventDefault();
+    const response = await getLocation(weatherInput);
+    const response2 = await getWeather(response);
+    setWeather(response2.list);
+    setWeatherInput('');
   }
 
   return (
@@ -36,12 +43,12 @@ function App() {
       <section id='searches'>
         <PokemonSearch pokemonInput={pokemonInput} setPokemonInput={setPokemonInput} pokemonSubmit={pokemonSubmit} />
         <YelpSearch yelpInput={yelpInput} setYelpInput={setYelpInput} yelpSubmit={yelpSubmit} />
-        <WeatherSearch weatherInput={weatherInput} />
+        <WeatherSearch weatherInput={weatherInput} setWeatherInput={setWeatherInput} weatherSubmit={weatherSubmit} />
       </section>
       <section id='lists'>
         <PokemonList pokemon={pokemon} />
         <BusinessesList businesses={businesses} />
-        <WeatherList />
+        <WeatherList weather={weather} />
       </section>
     </div>
   );

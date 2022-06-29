@@ -1,9 +1,9 @@
-export default function WeatherSearch() {
+export default function WeatherSearch({ weatherInput, setWeatherInput, weatherSubmit }) {
   return (
     <div>
-      <form>
+      <form onSubmit={weatherSubmit}>
         <label>City: </label>
-        <input />
+        <input value={weatherInput} onChange={(e) => setWeatherInput(e.target.value)} />
         <button>Search</button>
       </form>
     </div>
