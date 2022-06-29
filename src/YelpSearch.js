@@ -1,9 +1,9 @@
-export default function YelpSearch() {
+export default function YelpSearch({ yelpInput, setYelpInput, yelpSubmit }) {
   return (
     <div>
-      <form>
-        <label>City: </label>
-        <input />
+      <form onSubmit={yelpSubmit}>
+        <label>Location: </label>
+        <input value={yelpInput} onChange={(e) => setYelpInput(e.target.value)} />
         <button>Search</button>
       </form>
     </div>
