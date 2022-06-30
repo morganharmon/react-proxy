@@ -15,6 +15,8 @@ function App() {
   const [pokemon, setPokemon] = useState([]);
   const [businesses, setBusinesses] = useState([]);
   const [weather, setWeather] = useState([]);
+  const [city, setCity] = useState();
+  const [yelpCity, setYelpCity] = useState();
 
   async function pokemonSubmit(e) {
     e.preventDefault();
@@ -27,6 +29,7 @@ function App() {
     e.preventDefault();
     const response = await getYelp(yelpInput);
     setBusinesses(response.businesses);
+    setYelpCity(yelpInput);
     setYelpInput('');
   }
 
@@ -35,6 +38,7 @@ function App() {
     const response = await getLocation(weatherInput);
     const response2 = await getWeather(response);
     setWeather(response2.list);
+    setCity(response2.city.name);
     setWeatherInput('');
   }
 
@@ -47,8 +51,8 @@ function App() {
       </section>
       <section id='lists'>
         <PokemonList pokemon={pokemon} />
-        <BusinessesList businesses={businesses} />
-        <WeatherList weather={weather} />
+        <BusinessesList businesses={businesses} yelpCity={yelpCity} />
+        <WeatherList weather={weather} city={city} />
       </section>
     </div>
   );
