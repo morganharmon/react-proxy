@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+#lists {
+  display: flex;
+  flex-direction: row;
+}
+
+.list {
+  min-width: 200px;
+  margin: 15px;
+}
+
+#weather {
+  margin-bottom: 15px;
+}
