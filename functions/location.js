@@ -9,6 +9,7 @@ const headers = {
 
 
 exports.handler = async (event, context) => {
+  console.log(process.env);
   try {
     const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${event.queryStringParameters.q}&appid=${process.env.LOC_KEY}`);
     const data = await response.json();

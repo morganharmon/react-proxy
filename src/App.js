@@ -42,6 +42,7 @@ function App() {
     setWeatherInput('');
   }
 
+  
   return (
     <div className="App">
       <section id='searches'>
